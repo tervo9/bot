@@ -1,3 +1,7 @@
+<?php 
+
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,8 +9,8 @@
 	<title>Dat Bot</title>
 </head>
 <body>
-<?
-php if ($_GET['name'] == NULL):
+<?php 
+if ($_GET['name'] == NULL):
 ?>
 <form>
 	<label for="name">Name</label>
@@ -15,17 +19,24 @@ php if ($_GET['name'] == NULL):
 </form>
 
 <?php 
-else: 
+else:
 
 $name = $_GET['name'];
-$half_name_length = (int) (mb_strlen($nyttnamn) /2);
-$remaining_chars = mb_strlen($nytt_namn) - $half_name_length;
+$half_name_length = (int) (mb_strlen($name) / 2);
+$remaining_chars = mb_strlen($name) - $half_name_length;
 $name_end = mb_substr($name, $half_name_length, $remaining_chars);
 $name_beginning = mb_substr($name, 0, $half_name_length);
 $botname = $name_end . $name_beginning;
 ?>
 
-<h1><?= $botname ?></h1>
+<p><strong><?= $botname ?>:</strong> Hej <?= $name ?></p>
+
+<form>
+	<label for="fråga">Ask me anything<br></label>
+	<input type="text" name="reply">
+	<input type="hidden" name="name" value="<?= $name ?>">
+	<input type="submit" value="Reply!">
+</form>
 
 <?php endif ?>
 
