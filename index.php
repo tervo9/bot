@@ -19,7 +19,7 @@ if ($_GET['name'] == NULL):
 </form>
 
 <?php 
-elseif ($_GET['name']):
+elseif ($_GET['reply'] == NULL):
 
 $name = $_GET['name'];
 $half_name_length = (int) (mb_strlen($name) / 2);
@@ -32,7 +32,7 @@ $botname = $name_end . $name_beginning;
 <p><strong><?= $botname ?>:</strong> Hej <?= $name ?></p>
 
 <form>
-	<label for="fråga">Ask me anything<br></label>
+	<label for="fråga">Response<br></label>
 	<input type="text" name="reply">
 	<input type="hidden" name="name" value="<?= $name ?>">
 	<input type="hidden" name="botname" value="<?= $botname ?>">
@@ -52,6 +52,8 @@ else:
 $array = ["Fint väder?", "Hur mår du?"];
 $botreply = $array[random_int(0, count($array) - 1)];
 ?>
+
+<p><strong><?= $botname ?>:</strong><?= $botreply ?></p>
 
 <?php endif ?>
 
